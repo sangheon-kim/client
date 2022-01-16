@@ -1,0 +1,25 @@
+.Dropdown {
+  position: absolute;
+  top: 24px;
+  width: 120px;
+
+  &__list {
+    display: inline-block;
+    flex-direction: column;
+    width: 100%;
+    list-style: none;
+    text-align: left;
+
+    &--item {
+      display: flex;
+      align-items: center;
+      height: 24px;
+      padding-left: 8px;
+      background-color: var(--gray);
+
+      &:not(:first-child) {
+        border-top: 1px solid black;
+      }
+    }
+  }
+}

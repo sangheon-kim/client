@@ -1,0 +1,22 @@
+.SalaryLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  // max-width: 375px;
+  margin: 0 auto;
+  overflow: auto;
+  background-color: var(--bgColor);
+  transition: background-color 0.3s;
+
+  &.pc {
+    max-width: 375px;
+  }
+
+  .Content {
+    width: 100%;
+    flex: 1;
+  }
+}

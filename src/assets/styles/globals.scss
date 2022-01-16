@@ -1,0 +1,39 @@
+@import "src/assets/styles/settings/colors";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bgColor);
+  color: var(--txtColor);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+#__next {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ddd;
+}

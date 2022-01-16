@@ -1,0 +1,9 @@
+@import "src/assets/styles/settings";
+
+.Footer {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+  padding: size(16) 0;
+  @include typography(caption1);
+}

@@ -1,0 +1,22 @@
+@import "src/assets/styles/settings";
+
+.TextInput {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    // margin-bottom: 8px;
+    @include typography(caption2);
+    color: var(--blue);
+  }
+
+  input {
+    background: none;
+    padding: 8px 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid var(--blue);
+    color: var(--txtColor);
+    @include typography(body4);
+  }
+}

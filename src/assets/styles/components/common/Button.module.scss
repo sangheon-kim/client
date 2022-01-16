@@ -1,0 +1,25 @@
+$blue: #84dfff;
+
+.Button {
+  width: 100%;
+  height: 52px;
+  text-align: center;
+  padding: 4px 0;
+  color: var(--txtColor);
+  background-color: var(--blue);
+  border-radius: 8px;
+
+  &:hover,
+  &:focus {
+    background-color: darken($blue, 10%);
+  }
+
+  &:active {
+    background-color: darken($blue, 20%);
+  }
+
+  &:disabled {
+    background: #ddd;
+    color: #aaa;
+  }
+}

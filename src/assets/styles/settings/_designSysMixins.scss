@@ -1,0 +1,91 @@
+@mixin typography($textType) {
+  @if $textType == display1 {
+    font-size: size(128);
+    font-weight: 700;
+    line-height: size(160);
+  } @else if $textType == display2 {
+    font-size: size(96);
+    font-weight: 700;
+    line-height: size(120);
+  } @else if $textType == display3 {
+    font-size: size(80);
+    font-weight: 700;
+    line-height: size(100);
+  } @else if $textType == headline1 {
+    font-size: size(64);
+    font-weight: 700;
+    line-height: size(80);
+  } @else if $textType == headline2 {
+    font-size: size(40);
+    font-weight: 700;
+    line-height: size(50);
+  } @else if $textType == headline3 {
+    font-size: size(32);
+    font-weight: 700;
+    line-height: size(40);
+  } @else if $textType == headline4 {
+    font-size: size(28);
+    font-weight: 700;
+    line-height: size(36);
+  } @else if $textType == headline5 {
+    font-size: size(24);
+    font-weight: 700;
+    line-height: size(30);
+  } @else if $textType == headline6 {
+    font-size: size(20);
+    font-weight: 700;
+    line-height: size(26);
+  } @else if $textType == subtitle1 {
+    font-size: size(18);
+    font-weight: 400;
+    line-height: size(28);
+  } @else if $textType == subtitle2 {
+    font-size: size(16);
+    font-weight: 400;
+    line-height: size(24);
+  } @else if $textType == subtitle3 {
+    font-size: size(14);
+    font-weight: 400;
+    line-height: size(22);
+  } @else if $textType == body1 {
+    font-size: size(18);
+    font-weight: 400;
+    line-height: size(28);
+  } @else if $textType == body2 {
+    font-size: size(16);
+    font-weight: 400;
+    line-height: size(24);
+  } @else if $textType == body3 {
+    font-size: size(14);
+    font-weight: 400;
+    line-height: size(22);
+  } @else if $textType == body4 {
+    font-size: size(12);
+    font-weight: 400;
+    line-height: size(20);
+  } @else if $textType == caption1 {
+    font-size: size(12);
+    font-weight: 400;
+    line-height: size(18);
+  } @else if $textType == caption2 {
+    font-size: size(12);
+    font-weight: 700;
+    line-height: size(18);
+  } @else if $textType == caption3 {
+    font-size: size(10);
+    font-weight: 400;
+    line-height: size(16);
+  } @else if $textType == button1 {
+    font-size: size(16);
+    font-weight: 400;
+    line-height: size(20);
+  } @else if $textType == button2 {
+    font-size: size(14);
+    font-weight: 400;
+    line-height: size(18);
+  } @else if $textType == button3 {
+    font-size: size(12);
+    font-weight: 400;
+    line-height: size(16);
+  }
+}

@@ -1,0 +1,24 @@
+$white: #ffffff;
+$black: #222222;
+
+:root {
+  --bgColor: #ffffff;
+  --txtColor: #222222;
+  --red: #ff6363;
+  --blue: #84dfff;
+  --orange: #ffb319;
+  --green: #28df99;
+  --labelColor: #516beb;
+  --gray: #9d9d9d;
+}
+
+[data-theme="dark"] {
+  --bgColor: #222222;
+  --txtColor: #ddd;
+  --red: #e63e6d;
+  --blue: #1597bb;
+  --orange: #d89216;
+  --green: #a7d129;
+  --labelColor: #6e85b2;
+  --gray: #423f3e;
+}

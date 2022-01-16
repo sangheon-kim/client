@@ -1,0 +1,26 @@
+@import "src/assets/styles/settings";
+
+.StepOneTitle {
+  @include typography(headline6);
+  margin-top: size(16);
+}
+
+.RegisterWorkerForm {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  div[data-name="TextInput"]:not(:first-child),
+  div[data-name="RadioButtonGroup"] {
+    margin-top: 32px;
+  }
+
+  div[data-name="RadioButtonGroup"] {
+    margin-bottom: 32px;
+  }
+
+  button[data-name="Button"] {
+    margin-top: auto;
+  }
+}
