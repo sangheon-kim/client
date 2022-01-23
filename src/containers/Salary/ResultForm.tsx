@@ -4,7 +4,6 @@ import Button from "src/components/common/Button";
 import html2canvas from "html2canvas";
 
 const ResultForm: React.FC<any> = (props) => {
-  console.log({ props });
   const { name, birth, givenDate } = props.form;
   const {
     allowance,
@@ -39,19 +38,7 @@ const ResultForm: React.FC<any> = (props) => {
     threePremium: "3.3% 공제",
   };
 
-  const childKeyList = ["add", "night", "holiday"];
-
   const allowanceSum = extraAllowanceSum + defaultAllowance;
-
-  console.log(extraWage);
-
-  console.log({
-    FinalPrice,
-    name,
-    birth,
-    defaultAllowance,
-    givenDate,
-  });
 
   React.useEffect(() => {}, []);
 
