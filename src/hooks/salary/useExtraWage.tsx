@@ -58,21 +58,6 @@ export function useExtraWage() {
     []
   );
 
-  // const renderList = ExtraWageList.reduce(
-  //   (acc: { [key: string]: any }, cur) => {
-  //     console.log({
-  //       cur,
-  //       extraWage,
-  //     });
-  //     const isContain =
-  //       extraWage.filter((item) => item.id !== cur.key).length === 0;
-  //     if (!isContain || cur.key === "etc") acc.push(cur);
-
-  //     return acc;
-  //   },
-  //   []
-  // );
-
   const setUpExtraWage = (id: string) => {
     let parseId: string = id;
     if (id === "etc") {
@@ -144,12 +129,13 @@ export function useExtraWage() {
   };
 
   const onChangeExtraWage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
     const [parentKey, childKey] = name.split("_");
-    // console.log({
-    //   name,
-    //   value,
-    // });
+
+    if (/price/.test(name)) {
+      value = value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1");
+    }
+
     setExtraWage(
       extraWage.map((wageItem) => {
         return wageItem.key === parentKey
@@ -160,11 +146,6 @@ export function useExtraWage() {
           : wageItem;
       })
     );
-
-    // console.log({
-    //   name,
-    //   value,
-    // });
   };
 
   return {

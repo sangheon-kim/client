@@ -25,6 +25,8 @@ export const getStaticPaths = async () => {
       { params: { step: "1" } },
       { params: { step: "2" } },
       { params: { step: "3" } },
+      { params: { step: "4" } },
+      { params: { step: "5" } },
     ],
     fallback: false,
   };

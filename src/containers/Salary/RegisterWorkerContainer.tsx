@@ -5,6 +5,10 @@ import { useExtraWage } from "src/hooks/salary/useExtraWage";
 import { useDefaultWage } from "src/hooks/salary/useDefaultWage";
 import StepOneContainer from "./StepOneContainer";
 import StepTwoContainer from "./StepTwoContainer";
+import StepThreeContainer from "./StepThreeContainer";
+import ResultContainer from "./ResultContainer";
+import { useAllowance } from "src/hooks/salary/useAllowance";
+import ResultForm from "./ResultForm";
 
 type Props = {
   step: number;
@@ -17,11 +21,12 @@ const RegisterWorkerContainer: React.FC<Props> = ({ step }) => {
     givenDate: React.createRef<HTMLInputElement>(),
   });
 
-  const [form, setForm]: [RegisterForm, any] = React.useState({
+  const [form, setForm]: [any, any] = React.useState({
     name: "",
     birth: "",
     givenDate: "",
     wageSystem: "hourlyWage",
+    workerType: "fullTime",
   });
 
   const [isDropdown, setDropdown] = React.useState(false);
@@ -47,11 +52,22 @@ const RegisterWorkerContainer: React.FC<Props> = ({ step }) => {
     onChangeExtraWage,
   } = useExtraWage();
 
+  const allowance = useAllowance();
+
   const [sum, setSum] = React.useState(0);
 
   const onClickDropdown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const { id } = e.currentTarget;
     setUpExtraWage(id);
+    setDropdown(false);
+  };
+
+  const onClickAllowanceDropdown = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent>
+  ) => {
+    const { setUpExtraAllowance } = allowance;
+    const { id } = e.currentTarget;
+    setUpExtraAllowance(id);
     setDropdown(false);
   };
 
@@ -108,6 +124,39 @@ const RegisterWorkerContainer: React.FC<Props> = ({ step }) => {
             removeExtraWage={removeExtraWage}
             onChangeSubExtraWage={onChangeSubExtraWage}
             onChangeExtraWage={onChangeExtraWage}
+          />
+        );
+      case 3:
+        return (
+          <StepThreeContainer
+            form={form}
+            setForm={setForm}
+            setDropdown={setDropdown}
+            isDropdown={isDropdown}
+            onClickAllowanceDropdown={onClickAllowanceDropdown}
+            {...allowance}
+          />
+        );
+      case 4:
+        return (
+          <ResultContainer
+            form={form}
+            {...allowance}
+            defaultWage={defaultWage}
+            extraWage={extraWage}
+            extraWageSum={extraWageSum}
+            defaultSum={defaultSum}
+          />
+        );
+      case 5:
+        return (
+          <ResultForm
+            form={form}
+            {...allowance}
+            defaultWage={defaultWage}
+            extraWage={extraWage}
+            extraWageSum={extraWageSum}
+            defaultSum={defaultSum}
           />
         );
     }

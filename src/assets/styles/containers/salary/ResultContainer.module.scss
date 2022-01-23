@@ -1,0 +1,29 @@
+@import "src/assets/styles/settings";
+
+.ResultContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    h2 {
+      @include typography(body1);
+      text-align: center;
+    }
+  }
+
+  .ButtonGroup {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+
+    button:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}

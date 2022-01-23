@@ -1,0 +1,107 @@
+@import "src/assets/styles/settings";
+
+.ResultForm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  h5 {
+    @include typography(headline6);
+    margin: 8px 0 16px;
+
+    strong {
+      text-decoration: underline;
+    }
+
+    em {
+      font-style: normal;
+      @include typography(caption3);
+      font-weight: normal;
+      margin-right: 8px;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  &-header {
+    &-info {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        display: flex;
+        justify-content: space-between;
+        &:not(:first-child) {
+          margin-top: 8px;
+        }
+      }
+      // justify-content: space-between;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--txtColor);
+      @include typography(body4);
+    }
+
+    &-sum {
+      display: flex;
+      justify-content: space-between;
+      @include typography(body1);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--txtColor);
+      margin-top: 8px;
+    }
+  }
+
+  // 지급, 공제, 내용 영역
+  &-content {
+    // 지급
+    &-wage,
+    &-allowance {
+      margin-top: 24px;
+      &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include typography(body3);
+        padding-bottom: 8px;
+        border-bottom: 1px dashed var(--txtColor);
+
+        div {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: column;
+
+        &__item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          @include typography(body4);
+          margin-top: 16px;
+          position: relative;
+
+          .list-item__caption {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+          }
+        }
+      }
+    }
+    margin-bottom: 16px;
+  }
+
+  > button {
+    margin-top: auto;
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

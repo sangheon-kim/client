@@ -1,0 +1,117 @@
+@import "src/assets/styles/settings";
+
+.StepThreeContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &--UserInfo {
+    margin-top: size(16);
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--txtColor);
+
+    p {
+      @include typography(body2);
+    }
+  }
+
+  > button {
+    margin-top: auto;
+  }
+
+  .DefaultAllowance {
+    [data-name="TextInput"] {
+      margin-top: 16px;
+
+      &:last-of-type {
+        margin-bottom: 16px;
+      }
+    }
+
+    &__caption {
+      display: block;
+      margin-top: 16px;
+      color: var(--blue);
+      text-decoration: underline;
+    }
+  }
+
+  .ExtraAllowance {
+    &__header {
+      display: flex;
+      align-items: center;
+      @include typography(body2);
+      color: var(--txtColor);
+      margin-top: 16px;
+
+      &--button {
+        position: relative;
+        color: var(--txtColor);
+        margin-left: 8px;
+        background-color: var(--gray);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+      }
+
+      &--value {
+        margin-left: auto;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      &--header {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+        @include typography(body3);
+
+        &--title {
+          display: flex;
+          align-items: center;
+
+          .link {
+            color: var(--blue);
+            margin-left: 4px;
+            @include typography(caption3);
+          }
+        }
+
+        svg {
+          cursor: pointer;
+          margin-left: size(4);
+        }
+
+        &--price {
+          margin-left: auto;
+          outline: none;
+          background: none;
+          border: none;
+          color: var(--txtColor);
+          text-align: right;
+          @include typography(body3);
+
+          &:focus {
+            border-bottom: 1px solid var(--blue);
+          }
+
+          &:read-only {
+            border: none;
+            background: none;
+
+            &:focus {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
