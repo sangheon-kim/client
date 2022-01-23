@@ -20,8 +20,6 @@ const ResultContainer: React.FC<Props> = (props) => {
         query: { step: "1" },
       });
     }
-
-    console.log(props);
   }, []);
 
   const onClick = () => {

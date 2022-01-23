@@ -1,94 +1,11 @@
 import React from "react";
 import styles from "src/assets/styles/containers/salary/ResultForm.module.scss";
 import Button from "src/components/common/Button";
+import html2canvas from "html2canvas";
 
-const obj = {
-  form: {
-    name: "김영빈",
-    birth: "19981230",
-    givenDate: "20221230",
-    wageSystem: "hourlyWage",
-    workerType: "fullTime",
-  },
-  allowance: {
-    annuity: "10",
-    employmentInsurance: "40000",
-    healthyInsurance: "20000",
-    industrialAccident: "100000",
-  },
-  allowanceSum: 223456,
-  WorkerTypes: [
-    {
-      id: "workerType1",
-      value: "fullTime",
-      title: "4대보험",
-    },
-    {
-      id: "workerType2",
-      value: "etc",
-      title: "3.3%",
-    },
-    {
-      id: "workerType3",
-      value: "none",
-      title: "해당사항 없음",
-    },
-  ],
-  renderList: [
-    {
-      key: "etc",
-      text: "기타 (직접입력)",
-      isTaxFree: false,
-    },
-  ],
-  extraAllowance: [
-    {
-      key: "workTax",
-      title: "근로소득세",
-      price: "100000",
-    },
-    {
-      key: "etc0",
-      title: "기타",
-      price: "123456",
-    },
-  ],
-  defaultWage: {
-    time: "10",
-    price: "40000",
-  },
-  extraWage: [
-    {
-      key: "add",
-      title: "연장근로",
-      price: 112000,
-      child: [
-        {
-          subTitle: "연장근로 시간",
-          value: "10",
-          key: "time",
-          placeholder: "ex) 10",
-        },
-        {
-          subTitle: "연장근로 시급",
-          value: "11200",
-          key: "price",
-          placeholder: "ex) 11200",
-        },
-      ],
-    },
-    {
-      key: "bonus",
-      title: "상여금",
-      price: "10000",
-    },
-  ],
-  extraWageSum: 122000,
-  defaultSum: 400000,
-};
-
-const ResultForm: React.FC<any> = () => {
-  const { name, birth, givenDate } = obj.form;
+const ResultForm: React.FC<any> = (props) => {
+  console.log({ props });
+  const { name, birth, givenDate } = props.form;
   const {
     allowance,
     defaultSum,
@@ -97,7 +14,7 @@ const ResultForm: React.FC<any> = () => {
     defaultWage,
     extraWage,
     extraAllowance,
-  } = obj;
+  } = props;
   const defaultAllowance = Object.keys(allowance).reduce((acc, cur) => {
     acc += Number((allowance as any)[cur]);
     return acc;
@@ -135,119 +52,154 @@ const ResultForm: React.FC<any> = () => {
     defaultAllowance,
     givenDate,
   });
-  return (
-    <div className={styles.ResultForm}>
-      <h5>
-        <strong>{name}</strong> <em>( {birth.slice(2)} )</em>님의 급여명세서
-      </h5>
-      <div className={styles["ResultForm-header"]}>
-        <div className={styles["ResultForm-header-info"]}>
-          <p className={styles["ResultForm-header-info__givenDate"]}>
-            <strong>급여 지급일</strong> {givenDate}
-          </p>
-        </div>
-        <div className={styles["ResultForm-header-sum"]}>
-          <p className="ResultForm-header-sum__title">{"실수령액"}</p>
-          <p className="ResultForm-header-sum__price">
-            {(Number(FinalPrice) || 0).toLocaleString("ko-KR") + "원"}
-          </p>
-        </div>
-      </div>
-      <div className={styles["ResultForm-content"]}>
-        <div className={styles["ResultForm-content-wage"]}>
-          <div className={styles["ResultForm-content-wage-header"]}>
-            <div>
-              <button></button>
-              <p className={styles["ResultForm-content-wage-header__title"]}>
-                {"지급액"}
-              </p>
-            </div>
-            <p className={styles["ResultForm-content-wage-header__price"]}>
-              {(Number(wageSum) || 0).toLocaleString("ko-KR") + "원"}
-            </p>
-          </div>
-          <ul className={styles["ResultForm-content-wage-list"]}>
-            <li className={styles["ResultForm-content-wage-list__item"]}>
-              <p className={styles["list-item__title"]}>{"기본급"}</p>
-              <p className={styles["list-item__caption"]}>
-                {defaultWageCaption}
-              </p>
-              <p className={styles["list-item__price"]}>
-                {(Number(basic) || 0).toLocaleString("ko-KR") + "원"}
-              </p>
-            </li>
-            {extraWage.map((item) => {
-              const { child, title, price } = item;
 
-              return (
-                <li
-                  className={styles["ResultForm-content-wage-list__item"]}
-                  key={item.key}
-                >
-                  <p className={styles["list-item__title"]}>{title}</p>
-                  {child && (
-                    <p className={styles["list-item__caption"]}>
-                      {`${Number(child[1].value).toLocaleString(
-                        "ko-KR"
-                      )} * ${Number(child[0].value).toLocaleString("ko-KR")}`}
-                    </p>
-                  )}
-                  <p className={styles["list-item__price"]}>
-                    {Number(price).toLocaleString("ko-KR") + "원"}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <div className={styles["ResultForm-content-allowance"]}>
-          <div className={styles["ResultForm-content-allowance-header"]}>
-            <div>
-              <button></button>
-              <p className={styles["ResultForm-content-wage-header__title"]}>
-                {"공제액"}
-              </p>
-            </div>
-            <p className={styles["ResultForm-content-wage-header__price"]}>
-              {Number(allowanceSum).toLocaleString("ko-KR") + "원"}
+  React.useEffect(() => {}, []);
+
+  const saveAs = (uri: string, filename: string) => {
+    const link = document.createElement("a");
+    if (typeof link.download === "string") {
+      link.href = uri;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(uri);
+    }
+  };
+
+  const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    html2canvas(
+      document.querySelector("#ResultForm") || document.createElement("div")
+    ).then((canvas) => {
+      saveAs(canvas.toDataURL("image/png"), "salary.png");
+    });
+  };
+
+  return (
+    <React.Fragment>
+      <div
+        className={styles.ResultForm}
+        id="ResultForm"
+        style={{ padding: "0 8px" }}
+      >
+        <h5>
+          <strong>{name}</strong> <em>( {birth.slice(2)} )</em>님의 급여명세서
+        </h5>
+        <div className={styles["ResultForm-header"]}>
+          <div className={styles["ResultForm-header-info"]}>
+            <p className={styles["ResultForm-header-info__givenDate"]}>
+              <strong>급여 지급일</strong> {givenDate}
             </p>
           </div>
-          <ul className={styles["ResultForm-content-allowance-list"]}>
-            {Object.keys(allowance).map((item, idx) => {
-              return (
-                <li
-                  className={styles["ResultForm-content-allowance-list__item"]}
-                  key={idx}
-                >
-                  <p className={styles["list-item__title"]}>
-                    {DEFAULT_ALLOWANCE[item]}
-                  </p>
-                  <p className={styles["list-item__price"]}>
-                    {Number((allowance as any)[item] || 0).toLocaleString(
-                      "ko-KR"
-                    ) + "원"}
-                  </p>
-                </li>
-              );
-            })}
-            {extraAllowance.map((item, idx) => {
-              return (
-                <li
-                  className={styles["ResultForm-content-allowance-list__item"]}
-                  key={idx}
-                >
-                  <p className={styles["list-item__title"]}>{item.title}</p>
-                  <p className={styles["list-item__price"]}>
-                    {Number(item.price).toLocaleString("ko-KR") + "원"}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
+          <div className={styles["ResultForm-header-sum"]}>
+            <p className="ResultForm-header-sum__title">{"실수령액"}</p>
+            <p className="ResultForm-header-sum__price">
+              {(Number(FinalPrice) || 0).toLocaleString("ko-KR") + "원"}
+            </p>
+          </div>
+        </div>
+        <div className={styles["ResultForm-content"]}>
+          <div className={styles["ResultForm-content-wage"]}>
+            <div className={styles["ResultForm-content-wage-header"]}>
+              <div>
+                <button></button>
+                <p className={styles["ResultForm-content-wage-header__title"]}>
+                  {"지급액"}
+                </p>
+              </div>
+              <p className={styles["ResultForm-content-wage-header__price"]}>
+                {(Number(wageSum) || 0).toLocaleString("ko-KR") + "원"}
+              </p>
+            </div>
+            <ul className={styles["ResultForm-content-wage-list"]}>
+              <li className={styles["ResultForm-content-wage-list__item"]}>
+                <p className={styles["list-item__title"]}>{"기본급"}</p>
+                <p className={styles["list-item__caption"]}>
+                  {defaultWageCaption}
+                </p>
+                <p className={styles["list-item__price"]}>
+                  {(Number(basic) || 0).toLocaleString("ko-KR") + "원"}
+                </p>
+              </li>
+              {extraWage.map((item: any) => {
+                const { child, title, price } = item;
+
+                return (
+                  <li
+                    className={styles["ResultForm-content-wage-list__item"]}
+                    key={item.key}
+                  >
+                    <p className={styles["list-item__title"]}>{title}</p>
+                    {child && (
+                      <p className={styles["list-item__caption"]}>
+                        {`${Number(child[1].value).toLocaleString(
+                          "ko-KR"
+                        )} * ${Number(child[0].value).toLocaleString("ko-KR")}`}
+                      </p>
+                    )}
+                    <p className={styles["list-item__price"]}>
+                      {Number(price).toLocaleString("ko-KR") + "원"}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className={styles["ResultForm-content-allowance"]}>
+            <div className={styles["ResultForm-content-allowance-header"]}>
+              <div>
+                <button></button>
+                <p className={styles["ResultForm-content-wage-header__title"]}>
+                  {"공제액"}
+                </p>
+              </div>
+              <p className={styles["ResultForm-content-wage-header__price"]}>
+                {Number(allowanceSum).toLocaleString("ko-KR") + "원"}
+              </p>
+            </div>
+            <ul className={styles["ResultForm-content-allowance-list"]}>
+              {Object.keys(allowance).map((item, idx) => {
+                return (
+                  <li
+                    className={
+                      styles["ResultForm-content-allowance-list__item"]
+                    }
+                    key={idx}
+                  >
+                    <p className={styles["list-item__title"]}>
+                      {DEFAULT_ALLOWANCE[item]}
+                    </p>
+                    <p className={styles["list-item__price"]}>
+                      {Number((allowance as any)[item] || 0).toLocaleString(
+                        "ko-KR"
+                      ) + "원"}
+                    </p>
+                  </li>
+                );
+              })}
+              {extraAllowance.map((item: any, idx: any) => {
+                return (
+                  <li
+                    className={
+                      styles["ResultForm-content-allowance-list__item"]
+                    }
+                    key={idx}
+                  >
+                    <p className={styles["list-item__title"]}>{item.title}</p>
+                    <p className={styles["list-item__price"]}>
+                      {Number(item.price).toLocaleString("ko-KR") + "원"}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
-      <Button>다운로드</Button>
-    </div>
+      <Button onClick={onClick}>다운로드</Button>
+    </React.Fragment>
   );
 };
 
