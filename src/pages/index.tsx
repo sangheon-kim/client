@@ -1,24 +1,25 @@
-import type {
-  GetServerSideProps,
-  GetServerSidePropsContext,
-  NextPage,
-} from "next";
+import type { GetStaticPropsContext, NextPage } from "next";
 import React from "react";
-import Calculator from "src/components/calculator/Calculator";
+import Link from "next/link";
+// import Calculator from "src/components/calculator/Calculator";
 import wrapper from "src/store/configureStore";
 
 const Home: NextPage = () => {
   return (
-    <React.Fragment>
-      <Calculator />
-    </React.Fragment>
+    <h1>
+      {/* <Calculator /> */}
+      Hello,{" "}
+      <Link href="/salary">
+        <a style={{ textDecoration: "underline" }}>급여명세서 발급하러 가기</a>
+      </Link>
+    </h1>
   );
 };
 
 export default Home;
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (ctx: GetServerSidePropsContext) => {
+export const getStaticProps = wrapper.getStaticProps(
+  (store) => async (ctx: GetStaticPropsContext) => {
     try {
       return {
         props: {},
