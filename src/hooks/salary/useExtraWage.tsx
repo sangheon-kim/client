@@ -28,7 +28,7 @@ export function useExtraWage() {
     },
     {
       key: "meals",
-      text: "식대",
+      text: "식대 (비과세)",
       isTaxFree: true,
     },
     {
