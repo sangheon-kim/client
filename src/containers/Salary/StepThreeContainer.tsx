@@ -140,7 +140,7 @@ const StepThreeContainer: React.FC<Props> = (props) => {
       </div>
       <div className={styles.ExtraAllowance}>
         <div className={styles["ExtraAllowance__header"]}>
-          <h3 className={styles["ExtraAllowance__header--title"]}>추가 지급</h3>
+          <h3 className={styles["ExtraAllowance__header--title"]}>추가 공제</h3>
           <button
             className={styles["ExtraAllowance__header--button"]}
             onClick={() => setDropdown(!isDropdown)}

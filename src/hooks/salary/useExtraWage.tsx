@@ -84,7 +84,7 @@ export function useExtraWage() {
               subTitle: item?.text + " 시급",
               value: undefined,
               key: "price",
-              placeholder: "ex) 11200",
+              placeholder: "ex) 13800",
             },
           ],
         }),
