@@ -30,7 +30,20 @@ const StepThreeContainer: React.FC<Props> = (props) => {
     extraAllowance,
     removeExtraAllowance,
     onChangeExtraAllowance,
+    defaultSum,
+    setAllowance,
+    extraWage,
   } = rest;
+
+  const extraWageFilter = extraWage.reduce(
+    (acc: number, cur: { [key: string]: any }) => {
+      if (cur.key !== "meals") {
+        acc += Number(cur.price);
+      }
+      return acc;
+    },
+    0
+  );
 
   const {
     annuity,
@@ -47,7 +60,17 @@ const StepThreeContainer: React.FC<Props> = (props) => {
         query: { step: "1" },
       });
     }
-  }, []);
+
+    // 3.3% 자동 계산
+    if (workerType === "etc") {
+      setAllowance({
+        ...allowance,
+        threePremium: (extraWageFilter + defaultSum) * 0.033,
+      });
+    }
+
+    // console.log(();
+  }, [workerType]);
 
   const onClickRadio = React.useCallback(
     (e: any) => {

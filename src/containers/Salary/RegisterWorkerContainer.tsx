@@ -131,6 +131,8 @@ const RegisterWorkerContainer: React.FC<Props> = ({ step }) => {
           <StepThreeContainer
             form={form}
             setForm={setForm}
+            defaultSum={defaultSum}
+            extraWage={extraWage}
             setDropdown={setDropdown}
             isDropdown={isDropdown}
             onClickAllowanceDropdown={onClickAllowanceDropdown}
