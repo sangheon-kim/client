@@ -65,7 +65,7 @@ const StepThreeContainer: React.FC<Props> = (props) => {
     if (workerType === "etc") {
       setAllowance({
         ...allowance,
-        threePremium: (extraWageFilter + defaultSum) * 0.033,
+        threePremium: Math.floor((extraWageFilter + defaultSum) * 0.033),
       });
     }
 
