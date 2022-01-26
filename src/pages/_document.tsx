@@ -16,6 +16,8 @@ class MyDocument extends Document {
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8345292694906055"
+     crossorigin="anonymous"></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `
