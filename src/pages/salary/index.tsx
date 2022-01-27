@@ -8,6 +8,8 @@ const SalaryPage: NextPage = () => {
   return (
     <React.Fragment>
       <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8345292694906055"
+     crossOrigin="anonymous"></script>
         <title>Flaw 급여명세서 발급</title>
       </Head>
       <SalaryContainer />
